@@ -35,12 +35,35 @@ const [xxx,setXxx]=useState(val)
         2.updater可以接收到state和props。
 ```
 
+#### 对useState扩展
+
+react hooks默认是不支持useState的回调的，但有时候因为异步问题，不能及时获取到修改后的值，所以我们可以自定义回调函数
+
+```jsx
+function useCallbackState(od) {
+  const cbRef = useRef();
+  const [data, setData] = useState(od);
+
+  useEffect(() => {
+    cbRef.current && cbRef.current(data);
+  }, [data]);
+
+  return [
+    data,
+    function (d, callback) {
+      cbRef.current = callback;
+      setData(d);
+    }
+  ];
+}
+```
+
 #### 总结
 
     对象方式是函数方式的简写方式
         如果新状态不依赖于原状态 ===> 使用对象方式
         如果新状态依赖于原状态 ===> 使用函数方式
-    如果需要在setState()后获取最新的状态数据, 在第二个callback函数中读取
+    如果需要在setState()后获取最新的状态数据, 在第二个callback函数中读取（useState返回的setXxx没有第二个参数）
 
 ### setState()的同步or异步
 
