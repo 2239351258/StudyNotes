@@ -211,21 +211,26 @@ str.split([separator[, limit]])
 实现模板字符串渲染render函数
 
 ```js
-var obj={
-  info:{
-    user:{
-      name:'张三',
-      age:21
-  	}
-  }
+const data = {
+  user:{
+    name: "小明",
+    age: 16,
+  },
+  school: "第三中学",
+  classroom: "教室2"
 }
-var str=`这是一个模板字符串。我是{{info.user.name }}，{{info.user.age}}岁，{{info.a}}`
-
+// 百度面试题
+var str=`这是一个模板字符串。我是{{user.name }}，{{user.age}}岁，{{user.a}}`
+// 自己新增包含js语句的情况
+var str1`{{user.name}}今年 {{ user.age }} 岁，就读于 {{ school }} 今天在 {{ classroom }} 上课，{{ user.name }} {{ #data.age >= 18 ? '成年了' : '未成年' }}`
 console.log(render(str,data))
-//这是一个模板字符串。我是张三，21岁，undefined
+//这是一个模板字符串。我是小明，16岁，undefined
+console.log(render(str1,data))
+//小明今年 16 岁，就读于 第三中学 今天在 教室2 上课，小明 未成年
 ```
 
 ```js
+// 普通版
 function render(str,data){
   return str.replace(/\{\{\s*([a-zA-Z.]*)\s*\}\}/g,(match,p1,offset,str)=>{
     let arr=p1.split(".")
@@ -234,6 +239,25 @@ function render(str,data){
       res=res[arr[i]]
     }
     return res
+  })
+}
+// 升级版
+function render(str,data){
+  return str.replace(/{{\s*([\S\s]*?)\s*}}/g,(match,p1,offset,str)=>{
+		// 处理{{}} 这种情况
+    if(p1==="") return ""
+    // 处理包含js语句的情况
+    else if(p1.startsWith('#')){
+      return eval(p1.substr(1, p1.length - 1));
+    }
+    else{
+      let arr=p1.split(".")
+      let res=data[arr[0]]
+      for(let i=1;i<arr.length;i++){
+        res=res[arr[i]]
+      }
+      return res
+    }
   })
 }
 ```
