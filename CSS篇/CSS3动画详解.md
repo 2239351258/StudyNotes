@@ -1048,34 +1048,34 @@ perspective: 500px;
 之前,我们在 js 中定义一个函数的时候，是先定义，再调用：
 
 ```javascript
-    js 定义函数：
-        function fun(){ 函数体 }
+js 定义函数：
+function fun(){ 函数体 }
 
-     调用：
-     	fun();
+调用：
+fun();
 ```
 
 同样，我们在 CSS3 中**定义动画**的时候，也是**先定义，再调用**：
 
 ```javascript
-    定义动画：
-        @keyframes 动画名{
-            from{ 初始状态 }
-            to{ 结束状态 }
-        }
+定义动画：
+  @keyframes 动画名{
+    from{ 初始状态 }
+    to{ 结束状态 }
+  }
 
-     调用：
-      animation: 动画名称 持续时间；
+调用：
+animation: 动画名称 持续时间；
 ```
 
 其中，animation属性的格式如下：
 
 ```javascript
-            animation: 定义的动画名称 持续时间  执行次数  是否反向  运动曲线 延迟执行。(infinite 表示无限次)
+animation: 定义的动画名称 持续时间  执行次数  是否反向  运动曲线 延迟执行。(infinite 表示无限次)
 
-            animation: move1 1s  alternate linear 3;
+animation: move1 1s  alternate linear 3;
 
-            animation: move2 4s;
+animation: move2 4s;
 ```
 
 **定义动画的格式举例：**
@@ -1166,11 +1166,11 @@ perspective: 500px;
 animation属性的格式如下：
 
 ```javascript
-            animation: 定义的动画名称  持续时间  执行次数  是否反向  运动曲线 延迟执行。(infinite 表示无限次)
+animation: 定义的动画名称  持续时间  执行次数  是否反向  运动曲线 延迟执行。(infinite 表示无限次)
 
-            animation: move1 1s  alternate linear 3;
+animation: move1 1s  alternate linear 3;
 
-            animation: move2 4s;
+animation: move2 4s;
 ```
 
 
@@ -1179,13 +1179,13 @@ animation属性的格式如下：
 （1）动画名称：
 
 ```javascript
-	animation-name: move;
+animation-name: move;
 ```
 
 （2）执行一次动画的持续时间：
 
 ```javascript
-	animation-duration: 4s;
+animation-duration: 4s;
 ```
 
 备注：上面两个属性，是必选项，且顺序固定。
@@ -1193,7 +1193,7 @@ animation属性的格式如下：
 （3）动画的执行次数：
 
 ```javascript
-	animation-iteration-count: 1;       //iteration的含义表示迭代
+animation-iteration-count: 1;       //iteration的含义表示迭代
 ```
 
 属性值`infinite`表示无数次。
@@ -1201,7 +1201,7 @@ animation属性的格式如下：
 （3）动画的方向：
 
 ```javascript
-	animation-direction: alternate;
+animation-direction: alternate;
 ```
 
 属性值：normal 正常，alternate 反向。
@@ -1210,13 +1210,13 @@ animation属性的格式如下：
 
 
 ```javascript
-	animation-delay: 1s;
+animation-delay: 1s;
 ```
 
 （5）设置动画结束时，盒子的状态：
 
 ```javascript
-	animation-fill-mode: forwards;
+animation-fill-mode: forwards;
 ```
 
 属性值： forwards：保持动画结束后的状态（默认），  backwards：动画结束后回到最初的状态。
@@ -1224,7 +1224,7 @@ animation属性的格式如下：
 （6）运动曲线：
 
 ```
-	animation-timing-function: ease-in;
+animation-timing-function: ease-in;
 ```
 
 属性值可以是：linear   ease-in-out  steps()等。
@@ -1237,7 +1237,7 @@ animation属性的格式如下：
 
 
 ```javascript
-	animation: move2 4s steps(2);
+animation: move2 4s steps(2);
 ```
 
 效果如下：
@@ -1418,14 +1418,4 @@ PS：图片的url是<http://img.smyhvae.com/20180209_1245.gif>，图片较大，
 ![](http://img.smyhvae.com/20180209_1350.gif)
 
 大功告成。
-
-工程文件：[2018-02-09-fishes.rar](https://github.com/qianguyihao/web-resource/blob/main/project/2018-02-09-fishes.rar)
-
-## 我的公众号
-
-想学习**更多技能**？不妨关注我的微信公众号：**千古壹号**（id：`qianguyihao`）。
-
-扫一扫，你将发现另一个全新的世界，而这将是一场美丽的意外：
-
-![](http://img.smyhvae.com/20190101.png)
 
